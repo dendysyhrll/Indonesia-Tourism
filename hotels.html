@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Hotels in Indonesia</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Indonesian Tourism</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="hotels.html">Hotels</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="hotels">
+            <h2>Favorite Hotels in Indonesia</h2>
+            <article>
+                <h3>Hotel Mulia, Jakarta</h3>
+                <p>Address: Jl. Asia Afrika Senayan, Jakarta</p>
+                <p>Price: Starting from $150/night</p>
+                <p>Facilities: Swimming pool, Gym, Spa, Free Wi-Fi</p>
+            </article>
+            <article>
+                <h3>Hotel Padma, Bandung</h3>
+                <p>Address: Jl. Ranca Bentang 56-58, Bandung</p>
+                <p>Price: Starting from $100/night</p>
+                <p>Facilities: Swimming pool, Kids Club, Free Breakfast, Free Wi-Fi</p>
+            </article>
+            <article>
+                <h3>Four Seasons Resort, Bali</h3>
+                <p>Address: Jl. Suweta, Ubud, Bali</p>
+                <p>Price: Starting from $300/night</p>
+                <p>Facilities: Private Pool, Spa, Yoga classes, Free Wi-Fi</p>
+            </article>
+        </section>
+    </main>
+
+    <div class="container">
+        <h1>Formulir Pemesanan Hotel</h1>
+        <form action="/submit-booking" method="post">
+            <label for="name">Nama Lengkap</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Nomor Telepon</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="checkin">Tanggal Check-in</label>
+            <input type="date" id="checkin" name="checkin" required>
+            
+            <label for="checkout">Tanggal Check-out</label>
+            <input type="date" id="checkout" name="checkout" required>
+            
+            <label for="room-type">Tipe Kamar</label>
+            <select id="room-type" name="room-type" required>
+                <option value="single">Single</option>
+                <option value="double">Double</option>
+                <option value="suite">Suite</option>
+            </select>
+            
+            <label for="special-requests">Permintaan Khusus</label>
+            <textarea id="special-requests" name="special-requests" rows="4"></textarea>
+            
+            <button type="submit">Pesan Sekarang</button>
+        </form>
+    </div>
+</body>
+</html>
+
+    <footer>
+        <p>&copy; 2024 Indonesian Tourism. @dndysyhrll</p>
+    </footer>
+
+    <script>
+        document.getElementById('booking-form').addEventListener('submit', function(event) {
+            // Ambil nilai dari input
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var checkin = document.getElementById('checkin').value;
+            var checkout = document.getElementById('checkout').value;
+            var roomType = document.getElementById('room-type').value;
+
+            // Validasi input
+            if (!name || !email || !phone || !checkin || !checkout || !roomType) {
+                alert('Mohon isi semua bidang yang diperlukan.');
+                event.preventDefault(); // Menghentikan form dari submit
+                return;
+            }
+
+            // Validasi tanggal
+            if (new Date(checkout) <= new Date(checkin)) {
+                alert('Tanggal check-out harus setelah tanggal check-in.');
+                event.preventDefault(); // Menghentikan form dari submit
+                return;
+            }
+
+            alert('Formulir berhasil disubmit!');
+            // Form akan disubmit jika semua validasi lulus
+        });
+    </script>
+
+</body>
+</html>
